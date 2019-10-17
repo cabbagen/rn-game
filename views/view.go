@@ -5,5 +5,5 @@ import "github.com/gin-gonic/gin"
 var pattern string = "./views/*.html"
 
 func RegisterTemplate(engine *gin.Engine) {
-	engine.LoadHTMLGlob(pattern)
+	engine.Delims("[[", "]]").LoadHTMLGlob(pattern)
 }

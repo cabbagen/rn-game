@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.home-lemmas {
+    margin: 80px 10px 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: center;
+    align-content: flex-start;
+}
+.home-lemma-word {
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border: 1px solid #cccccc;
+}
+.home-lemma-word.selected {
+    border-color: cornflowerblue;
+}
+.home-lemma-word .tipWord {
+    color: cornflowerblue;
+}
+.home-operation-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 80px auto;
+}
+.home-operation-buttons .tip-button {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 4px;
+    background-color: cornflowerblue;
+    margin: 0 15px;
+}
+.home-operation-buttons .tip-button:hover {
+    cursor: pointer;
+    background-color: #5384dc;
+}

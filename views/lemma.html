@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>lemma game</title>
+        <link href="/static/styles/lemma.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="root">
+            <div class="home-lemmas">
+                <div
+                    :key="index"
+                    @click="handleLemmaWordClick(item)"
+                    v-for="(item, index) in layoutRandomLemmaWords"
+                    :class="['home-lemma-word', currentLemma.indexOf(item.id) > -1 ? 'selected' : '']"
+                >
+                    <span :class="item.isTip ? 'tipWord' : ''" v-if="item.removed"></span>
+                    <span :class="item.isTip ? 'tipWord' : ''" v-else>
+                        {{item.name}}
+                    </span>
+                </div>
+            </div>
+            <div class="home-operation-buttons">
+                <div class="tip-button" @click="handleLemmaTip">提示一下</div>
+                <div class="tip-button" @click="handleLemmaAgain">再玩一次</div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        window.DATA = [[.]]
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" type="text/javascript"></script>
+    <script src="/static/javascripts/lemma.js" type="text/javascript"></script>
+</html>

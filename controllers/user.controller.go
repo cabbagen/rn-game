@@ -6,6 +6,7 @@ import (
 	"github.com/pkg/errors"
 	"encoding/json"
 	"rn-game/middlewares"
+	"rn-game/schemas"
 )
 
 type UserController struct {
@@ -49,5 +50,25 @@ func (uc UserController) Login(c *gin.Context) {
 
 // 获取用户信息
 func (uc UserController) GetUserInfo(c *gin.Context) {
-	//userId, error := c.Param("userId")
+	tokenString, isExist := c.Get("userInfo")
+
+	if !isExist {
+		uc.HandleErrorResponse(c, errors.New("token 不存在"))
+		return
+	}
+
+	var userInfo schemas.User
+
+	if error := json.Unmarshal([]byte(tokenString.(string)), &userInfo); error != nil {
+		uc.HandleErrorResponse(c, error)
+		return
+	}
+
+	realUserInfo, error := models.NewUserModel().GetUserInfoById(userInfo.ID)
+
+	if error != nil {
+		uc.HandleErrorResponse(c, error)
+		return
+	}
+	uc.HandleSuccessResponse(c, realUserInfo)
 }

@@ -57,7 +57,7 @@ func (ic IndexController) getIndexCategories() ([]IndexCategory, error) {
 	var indexCategory []IndexCategory
 
 	var categoryInfo map[string][]int = map[string][]int {
-		"热门推荐": []int { 29, 37, 45, 60, 72 },
+		"热门推荐": []int { 288, 37, 45, 60, 72 },
 		"经典射击": []int { 264, 284, 287, 241, 240 },
 		"午后休闲": []int { 92, 94, 86, 80, 79 },
 		"体育飙车": []int { 181, 182, 185, 186, 189 },

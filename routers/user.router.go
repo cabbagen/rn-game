@@ -13,4 +13,9 @@ var userRoutes []route = []route {
 		Method: "POST",
 		Handles: []gin.HandlerFunc { userController.Login },
 	},
+	route {
+		Path: "/user/userInfo",
+		Method: "GET",
+		Handles: []gin.HandlerFunc { tokenMiddleware.Handle, userController.GetUserInfo },
+	},
 }
