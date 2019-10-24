@@ -11,7 +11,7 @@ type LemmaController struct {
 }
 
 func (lc LemmaController) RenderLemmaGame(c *gin.Context) {
-	lemmas, error := lc.getRandomLemmas(10)
+	lemmas, error := lc.getRandomLemmas(2)
 
 	if error != nil {
 		lc.HandleErrorResponse(c, error)

@@ -56,9 +56,6 @@ var lemmaGame = new Vue({
             return layoutRandomLemmaWords;
         }
     },
-    mount: function() {
-
-    },
     methods: {
         handleLemmaWordClick: function(lemmaWord) {
             if (/^\$/.test(lemmaWord.id)) {
@@ -99,6 +96,14 @@ var lemmaGame = new Vue({
             this.currentLemma = [];
             this.lemmas = newLemmas;
             this.randomLemmaWords = newRandomLemmaWords;
+
+            // 胜利了 yeah！
+            window.setTimeout(() => {
+                if (this.lemmas.find(lemma => !lemma.removed)) {
+                    return
+                }
+                alert('您胜利了 ✌️')
+            }, 500);
         },
         handleLemmaTip() {
             var ableLemmas = this.lemmas.filter(lemma => !lemma.removed);

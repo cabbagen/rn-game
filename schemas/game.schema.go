@@ -12,7 +12,7 @@ type Game struct {
 	CategoryId      int          `gorm:"column:category_id; type:int; not null" json:"categoryId"`
 	Download        int          `gorm:"column:download; type:int; not null; default:0" json:"download"`
 	PlayLink        string       `gorm:"column:play_link; type:varchar(255); not null; default:\"\"" json:"playLink"`
-	Description     string      `gorm:"column:description; type:text; not null" json:"description"`
+	Description     string       `gorm:"column:description; type:text; not null" json:"description"`
 	Remark          string       `gorm:"column:remark; type:varchar(255); not null; default:\"\"" json:"remark"`
 	PublishDate     time.Time    `gorm:"column:publish_date; type:datetime" json:"publishDate"`
 }
