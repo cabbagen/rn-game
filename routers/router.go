@@ -19,6 +19,7 @@ func init() {
 	routes = append(routes, gameRoutes...)
 	routes = append(routes, lemmaRoutes...)
 	routes = append(routes, userRoutes...)
+	routes = append(routes, recordRoutes...)
 }
 
 func RegisterRouters(engine *gin.Engine) {

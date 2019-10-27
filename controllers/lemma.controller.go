@@ -34,7 +34,3 @@ func (lc LemmaController) getRandomLemmas(number int) ([]schemas.Lemma, error) {
 	return lemmas, nil
 }
 
-// 添加记录
-func (lc LemmaController) createGamePlayRecord(c gin.Context) {
-
-}
