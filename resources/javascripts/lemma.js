@@ -30,7 +30,9 @@ function getLemmaWords(lemmas) {
     return shuffle(lemmaWords);
 }
 
-var { lemmas } = window.DATA.data;
+
+var { lemmas, gameId } = window.DATA.data;
+
 
 var lemmaGame = new Vue({
     el: '#root',
@@ -38,6 +40,12 @@ var lemmaGame = new Vue({
         lemmas,
         currentLemma: [],
         randomLemmaWords: getLemmaWords(lemmas),
+    },
+    mounted: function() {
+        var that = this;
+        document.addEventListener('message', function(event) {
+            that.addLemmaGameRecord(event.data);
+        }, false);
     },
     computed: {
         layoutRandomLemmaWords: function() {
@@ -57,6 +65,23 @@ var lemmaGame = new Vue({
         }
     },
     methods: {
+        addLemmaGameRecord: function(token) {
+            $.ajax({
+                url: '/record/record',
+                method: 'POST',
+                data: JSON.stringify({gameId: gameId}),
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'token': token,
+                },
+                success: function(result) {
+                    console.log(result)
+                },
+                error: function (error) {
+                    console.log(error.message)
+                }
+            })
+        },
         handleLemmaWordClick: function(lemmaWord) {
             if (/^\$/.test(lemmaWord.id)) {
                 return;

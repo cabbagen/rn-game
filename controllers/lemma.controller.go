@@ -20,6 +20,7 @@ func (lc LemmaController) RenderLemmaGame(c *gin.Context) {
 	c.HTML(200, "lemma.html", gin.H {
 		"data": gin.H {
 			"lemmas": lemmas,
+			"gameId": 288,
 		},
 	})
 }
