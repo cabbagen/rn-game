@@ -42,7 +42,7 @@ func(rm RecordModel) GetUserRecords(userId int, startTime, endTime string, pageN
 
 	error := rm.database.
 		Table("cb_records").
-		Select("cb_records.id as id, username, nickname, gender, avatar, cb_games.img as gameImg, cb_games.name as gameName, cb_games.play_link as gamePlayLink, cb_categories.name as gameCategoryName").
+		Select("cb_records.id as id, username, nickname, gender, avatar, cb_games.id as gameId, cb_games.img as gameImg, cb_games.name as gameName, cb_games.play_link as gamePlayLink, cb_categories.name as gameCategoryName").
 		Where("user_id = ? and cb_records.created_at > ? and cb_records.created_at < ?", userId, times[0], times[1]).
 		Joins("inner join cb_games on cb_records.game_id = cb_games.id").
 		Joins("inner join cb_users on cb_records.user_id = cb_users.id").
